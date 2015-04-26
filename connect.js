@@ -13,10 +13,10 @@ module.exports = function(io, queue){
 	  });
 
 	  socket.on('chat message', function (msg) {
-        //console.log('chat message from ' + socket.id + ': ' + msg);
+        console.log('chat message from ' + socket.id + ': ' + msg);
         var roomId = socket.roomId;
         if (roomId) {
-        	socket.broadcast.to(name).emit('chat message', msg);
+        	io.to(roomId).emit('chat message', msg);
         }
     });
 
@@ -26,7 +26,7 @@ module.exports = function(io, queue){
     });
 	});
 
-	var leaveGame = function(socket){
+	function leaveGame(socket){
 		// remove if socket was still on queue
 		var index = queue.indexOf(socket);
   	if (index != -1)
@@ -34,7 +34,7 @@ module.exports = function(io, queue){
   	
 	};
 
-	var generateRoomId = function(len){
+	function generateRoomId(len){
 		var pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-';
 		var roomId = '';
 

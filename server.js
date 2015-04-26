@@ -17,4 +17,4 @@ require('./routes')(app, io);
 
 
 var waitingQueue = [];
-require('./match')(io, waitingQueue);
+require('./connect')(io, waitingQueue);
