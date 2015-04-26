@@ -3,10 +3,13 @@
 	"version": "0.1",
 	"description": "Real-time chat game",
 	"main": "server.js",
+	"engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
 	"dependencies": {
 		"ejs": "^1.0.0",
     "express": "^4.8.2",
-    "gravatar": "~1.0.6",
     "socket.io": "^1.0.6"
 	}
 }
