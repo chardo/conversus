@@ -3,12 +3,30 @@
 <html>
 	<head>
 		<title>Conversus</title>
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body>
-		<button id="join">Join</button>
-		<form id="textbox">
-			<input id="m" autocomplete="off" /><button>Send</button>
-		</form>
+		<h1>Conversus</h1>
+
+		<div id="landing" class="show">
+			<h3>A game about choosing your words wisely</h3>
+			<p>Try to trick your opponent into saying your passphrase before they trick you into saying theirs.</p>
+			<form id="textbox">
+				<input id="m" autocomplete="off" placeholder="your name"/><button id="join">play now</button>
+			</form>
+		</div>
+
+		<div id="waiting" class="hide">
+			<h3>just chill for a sec, we're finding you a partner</h3>
+		</div>
+
+		<div id="chat" class="hide">
+			<ul class="chats"></ul>
+			<form id="chatbox">
+				<input id="m" autocomplete="off" /><button id="send">send</button>
+			</form>
+			</div>
+		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
