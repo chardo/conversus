@@ -56,7 +56,6 @@ $(function(){
 
 	function createChatMsg(data){
 		var sender = '';
-		alert('client name: '+name + '\n' + 'server name: '+data.name);
 		if (name == data.name)
 			sender = 'me';
 		else
