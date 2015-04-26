@@ -4,10 +4,14 @@
 	list-style-type: none;
 }
 
-.show {
+#landing {
 	display: inline;
 }
 
-.hide {
+#waiting {
+	display: none;
+}
+
+#chat {
 	display: none;
 }
