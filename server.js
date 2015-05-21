@@ -17,4 +17,4 @@ require('./routes')(app, io);
 
 
 var waitingQueue = [];
-require('./connect')(io, waitingQueue);
+require('./game/controller')(io, waitingQueue);

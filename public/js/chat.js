@@ -30,6 +30,7 @@ $(function(){
 	socket.on('chat message', function(data){
 		// do something with the message
 		createChatMsg(data);
+		checkStatus(data);
 	});
 
 	function generateName(len){
@@ -52,17 +53,28 @@ $(function(){
 
 		socket.emit('chat message', {name: name, msg: msg});
 		$('#m').val('');
-	};
+	}
 
 	function createChatMsg(data){
 		var sender = '';
-		if (name == data.name)
+		if (data.name == name)
 			sender = 'me';
 		else
 			sender = 'you';
 
 		var newMsg = '<li class="'+sender+'">' + data.msg + '</li>'; 
 		$('#chats').append(newMsg);
-	};
+	}
+
+	function checkStatus(data){
+		if (data.gameOver){
+			if (data.name == name)
+				// I lose!
+				alert('You Lose!');
+			else
+				// I win!
+				alert('You Win!');
+		}
+	}
 
 });
