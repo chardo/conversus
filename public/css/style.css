@@ -1,11 +1,33 @@
-* {margin:0; padding:0; border:0;}
+/*
+COLORS (do the ol' cmd+d trick to swap these out if we change them)
+-----------------
+blueish:
+#5adae7
 
-.chats {
-	list-style-type: none;
+goldish:
+#f9cd0e
+*/
+
+html, body {margin:0; padding:0;}
+
+html, h1, h2, h3, h4, h5, button {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 400;
+	color: #444;
+}
+
+/*============================================
+MAIN 'PAGES' (actually just hidden divs for now)
+(eventually make these separate views?)
+(idk I'd have to learn express probably)
+==============================================*/
+
+#landing, #waiting, #chat {
+	max-width: 100%;
 }
 
 #landing {
-	display: inline;
+	display: inline-block;
 }
 
 #waiting {
@@ -14,4 +36,95 @@
 
 #chat {
 	display: none;
+}
+
+/*============================================
+LANDING PAGE LAYOUT
+==============================================*/
+#title {
+	width: 100vw;
+	max-width: 100%;
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	line-height: 3em;
+	background: -webkit-linear-gradient(75deg, #5adae7, #5adae7 50%, #f9cd0e 50%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(75deg, #5adae7, #5adae7 50%, #f9cd0e 50%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(75deg, #5adae7, #5adae7 50%, #f9cd0e 50%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(75deg, #5adae7, #5adae7 50%, #f9cd0e 50%); /* Standard syntax (must be last) */
+}
+
+#join {
+	margin-top: 15px;
+	width: 200px;
+	height: 70px;
+	background-color: #fff;
+	border-radius: 30px;
+	border: 2px solid #444;
+}
+
+#join:hover {
+	border-color: #fff;
+	background-color: #444;
+}
+
+#join:active {
+	border-color: #444;
+	background-color: #fff;
+}
+
+#how-to {
+	width: 100vw;
+	max-width: 100%;
+}
+
+#how-to > h1 {
+}
+
+#how-to > h2 {
+	margin:;
+}
+
+/*============================================
+TEXTUAL STYLINGS
+==============================================*/
+h1 {
+	font-size: 5em;
+	font-weight: 400;
+	text-align: center;
+}
+
+h2 {
+	font-size: 2.5em;
+	font-weight: 300;
+}
+
+@media screen and (max-width: 530px) {
+	#title > h2 {
+		font-size: 1.8em;
+	}
+}
+@media screen and (min-width: 531px) {
+	#title > h2 {
+		font-size: 2.5em;
+	}
+}
+
+h3 {}
+
+h4 {}
+
+h5 {}
+
+#join {
+	font-size: 3em;
+	padding-bottom: 10px;
+}
+
+#join:hover {
+	color: #fff;
+}
+
+.chats {
+	list-style-type: none;
 }

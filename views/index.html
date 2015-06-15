@@ -2,20 +2,33 @@
 
 <html>
 	<head>
-		<title>Conversus</title>
+		<title>Conversus | Choose your words wisely</title>
+
+		<!-- FONTS 'N' STYLESHEET -->
+		<link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+
 	</head>
 	<body>
-		<h1>Conversus</h1>
-
 		<div id="landing">
-			<h3>A game about choosing your words wisely</h3>
-			<p>Try to trick your opponent into saying your passphrase before they trick you into saying theirs.</p>
-			<button id="join">play now</button>
+			<div id="title">
+				<h1>conversus</h1>
+				<h2>choose your words wisely</h2>
+
+				<button id="join">play</button>
+			</div>
+			<div id="how-to">
+				<h1>how to play</h1>
+				<h2>chat with a stranger</h2>
+				<h2>guide them towards your passphrase</h2>
+				<h2>avoid (or guess) their passphrase</h2>
+				<h2>bask in glory, or retreat in shame</h2>
+			</div>
 		</div>
 
 		<div id="waiting">
-			<h3>just chill for a sec, we're finding you a partner</h3>
+			<h2>just chill for a sec, we're finding you a partner</h2>
 		</div>
 
 
@@ -27,5 +40,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="../js/chat.js"></script>
+
 	</body>
 </html>
