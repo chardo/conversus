@@ -57,12 +57,12 @@ $(function(){
 
 	function createChatMsg(data){
 		var sender = '';
-		if (data.name == name)
-			sender = 'me';
+		if (data.senderId == data.game.p1)
+			senderClass = 'p1Message';
 		else
-			sender = 'you';
+			senderClass = 'p2Message';
 
-		var newMsg = '<li class="'+sender+'">' + data.msg + '</li>'; 
+		var newMsg = '<li class="'+senderClass+'">' + data.msg + '</li>'; 
 		$('#chats').append(newMsg);
 	}
 

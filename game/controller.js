@@ -21,6 +21,8 @@ module.exports = function(io, queue){
         var roomId = socket.roomId;
         if (roomId && games.hasOwnProperty(roomId)) {
         	data.gameOver = games[roomId].checkMsg(socket.id, data.msg);
+        	data.game = games[roomId];
+        	data.senderId = socket.id;
         	io.to(roomId).emit('chat message', data);
         }
     });
@@ -80,6 +82,8 @@ function generateGame(queue){
 
   // create game and add to games object
   var game = new Game(player1.id, player2.id);
+  console.log("Player 1 = " + game.p1);
+  console.log("Player 2 = " + game.p2);
   games[roomId] = game;
 
   return roomId;
