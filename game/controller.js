@@ -82,8 +82,8 @@ function generateGame(queue){
 
   // create game and add to games object
   var game = new Game(player1.id, player2.id);
-  console.log("Player 1 = " + game.p1);
-  console.log("Player 2 = " + game.p2);
+  console.log('Player 1: ' + game.p1); console.log('Player 1 target: ' + game.p1Target);
+  console.log('Player 2: ' + game.p2); console.log('Player 2 target: ' + game.p2Target);
   games[roomId] = game;
 
   return roomId;
