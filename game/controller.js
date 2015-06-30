@@ -21,7 +21,7 @@ module.exports = function(io, queue){
         var roomId = socket.roomId;
         if (roomId && games.hasOwnProperty(roomId)) {
         	data.gameOver = games[roomId].checkMsg(socket.id, data.msg);
-        	data.game = games[roomId];
+        	//data.game = games[roomId];
         	data.senderId = socket.id;
         	io.to(roomId).emit('chat message', data);
         }
@@ -37,8 +37,20 @@ module.exports = function(io, queue){
 		if (queue.length < 2)
 			return;
 
-		roomId = generateGame(queue, io);
-    io.to(roomId).emit('start game', null);
+		var roomId = generateGame(queue, io);
+		var game = games[roomId];
+
+    //io.to(roomId).emit('start game', null);
+    io.to(game.p1).emit('start game', {
+    	playerId: game.p1, 
+    	opponentId: game.p2, 
+    	passphrase: game.p1Target
+    });
+    io.to(game.p2).emit('start game', {
+    	playerId: game.p2, 
+    	opponentId: game.p1, 
+    	passphrase: game.p2Target
+    });
 
 	}, 1000);
 };
@@ -82,8 +94,8 @@ function generateGame(queue){
 
   // create game and add to games object
   var game = new Game(player1.id, player2.id);
-  console.log('Player 1: ' + game.p1); console.log('Player 1 target: ' + game.p1Target);
-  console.log('Player 2: ' + game.p2); console.log('Player 2 target: ' + game.p2Target);
+  console.log('Player 1: ' + game.p1); console.log('Player 1 passphrase: ' + game.p1Target);
+  console.log('Player 2: ' + game.p2); console.log('Player 2 passphrase: ' + game.p2Target);
   games[roomId] = game;
 
   return roomId;

@@ -3,6 +3,8 @@ $(function(){
 	var socket = io();
 
 	var name = generateName(10);
+
+	var playerId, opponentId, passphrase;
 	//alert(name);
 
 	$('#join').on('click', function(e){
@@ -13,9 +15,13 @@ $(function(){
 		$('#waiting').show();
 	});
 
-	socket.on('start game', function(){
+	socket.on('start game', function(data){
+		playerId = data.playerId;
+		opponentId = data.opponentId;
+		passphrase = data.passphrase;
 		$('#waiting').hide();
 		$('#chat').show();
+		$('#passphrase').html(passphrase);
 	});
 
 	$('#send').on('click', function(){
@@ -57,7 +63,7 @@ $(function(){
 
 	function createChatMsg(data){
 		var sender = '';
-		if (data.senderId == data.game.p1)
+		if (data.senderId == playerId)
 			senderClass = 'p1Message';
 		else
 			senderClass = 'p2Message';
