@@ -37,6 +37,15 @@
 			<input id="m" autocomplete="off" /><button id="send">send</button>
 		</div>
 
+		<!-- Win and lose screens -->
+		<div id="win">
+			<h2>got 'em!</h2>
+		</div>
+		<div id="lose">
+			<h2>better luck next time...</h2>
+		</div>
+		<div id="restart">starting new game in <span id="countdown"></span></div>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="../js/chat.js"></script>

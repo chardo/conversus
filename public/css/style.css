@@ -38,6 +38,10 @@ MAIN 'PAGES' (actually just hidden divs for now)
 	display: none;
 }
 
+#win, #lose, #restart {
+	display: none;
+}
+
 /*============================================
 LANDING PAGE LAYOUT
 ==============================================*/

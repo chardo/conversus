@@ -68,13 +68,44 @@ $(function(){
 
 	function checkStatus(data){
 		if (data.gameOver){
+			$('#chat').hide();
 			if (data.name == name)
 				// I lose!
-				alert('You Lose!');
+				$('#lose').show();
 			else
 				// I win!
-				alert('You Win!');
+				$('#win').show();
+
+			$('#restart').show();
+
+			// countdown
+			var timeLeft = 3,
+					countInterval;
+
+			// set display to initial
+			$('#countdown').html(timeLeft);
+
+			countInterval = setInterval(function (){
+				timeLeft--;			// decrement time
+				$('#countdown').html(timeLeft);		// update countdown display
+				if (timeLeft === 0) {
+					clearInterval(countInterval);
+					newGame();
+				}
+			}, 1000);
 		}
+	}
+
+	function newGame(){
+		$('#lose').hide();
+		$('#win').hide();
+		$('#restart').hide();
+
+		$('#chats').empty();
+		
+		// start new game
+		socket.emit('join queue', null);
+		$('#waiting').show();
 	}
 
 });

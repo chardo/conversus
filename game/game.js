@@ -10,10 +10,10 @@ function Game(p1, p2){
 }
 
 Game.prototype.checkMsg = function(id, msg){ 
-
+	var msg = ' ' + msg + ' ';			// enclose in spaces to ensure word match
 	var pattern = '';
 	if (id == this.p1)
-		pattern = ' ' + this.p1Target + ' ';		// enclose with spaces to ensure word match
+		pattern = ' ' + this.p1Target + ' ';
 	else
 		pattern = ' ' + this.p1Target + ' ';
 
@@ -22,7 +22,7 @@ Game.prototype.checkMsg = function(id, msg){
 	return re.test(msg);
 };
 
-// helper function
+// returns array of two randomly selected words from given file
 function getWords(fileName){
 	try {
 		var data = fs.readFileSync(fileName, {encoding: 'utf8'});
@@ -40,7 +40,7 @@ function getWords(fileName){
 		if (e.code === 'ENOENT') {
 			console.log('File not found! Defaulting target words.');
 		} else {
-			throw e;
+			console.log(e);
 		}
 		return ['pork', 'beans'];
 	}
