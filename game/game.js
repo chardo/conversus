@@ -10,14 +10,16 @@ function Game(p1, p2){
 }
 
 Game.prototype.checkMsg = function(id, msg){ 
-	result = false;
 
+	var pattern = '';
 	if (id == this.p1)
-		result = msg == this.p1Target;
+		pattern = ' ' + this.p1Target + ' ';		// enclose with spaces to ensure word match
 	else
-		result = msg == this.p2Target;
+		pattern = ' ' + this.p1Target + ' ';
 
-	return result;
+	var re = new RegExp(pattern, 'i');
+	
+	return re.test(msg);
 };
 
 // helper function
