@@ -33,9 +33,15 @@
 
 
 		<div id="chat" class="hide">
-			<div>get them to say: <span id="passphrase"></span></div>
-			<ul id="chats"></ul>
-			<input id="m" autocomplete="off" /><button id="send">send</button>
+			<div id="chat-wrapper">
+				<div id="chat-header">get them to say: <span id="passphrase"></span></div>
+				<div id="chat-messages">
+					<ul id="chats"></ul>
+				</div>
+				<div id="chat-input">
+					<input id="m" autocomplete="off" autofocus/><button id="send">send</button>
+				</div>
+			</div>
 		</div>
 
 		<!-- Win and lose screens -->

@@ -10,7 +10,7 @@ goldish:
 
 html, body {margin:0; padding:0;}
 
-html, h1, h2, h3, h4, h5, button {
+html, h1, h2, h3, h4, h5, input, button {
 	font-family: 'Quicksand', sans-serif;
 	font-weight: 400;
 	color: #444;
@@ -24,6 +24,7 @@ MAIN 'PAGES' (actually just hidden divs for now)
 
 #landing, #waiting, #chat {
 	max-width: 100%;
+	max-height: 100%;
 }
 
 #landing {
@@ -92,20 +93,60 @@ LANDING PAGE LAYOUT
 /*============================================
 CHAT PAGE LAYOUT
 ==============================================*/
-#m {
-
+#chat {
+	min-height: 100vh;
+	min-width: 100vw;
 }
 
-#send {
+#chat-wrapper {
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+}
 
+#chat-header, #chat-messages, #chat-input {
+	width: 100%;
+}
+
+#chat-header {
+	height: 60px;
+}
+
+#chat-messages {
+	position: absolute;
+	top: 60px;
+	bottom: 60px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	overflow-y: scroll;
+}
+
+#chat-input {
+	position: absolute;
+	bottom: 0;
+	height: 60px;
 }
 
 #chats {
-
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 #chats li {
+	clear: both;
+	padding: 4px 10px 4px 10px;
+	margin-top: 10px;
+	bottom: 0;
+}
 
+.mine {
+	float: right;
+	border-radius: 15px 15px 0px 15px;
+}
+
+.yours {
+	float: left;
+	border-radius: 15px 15px 15px 0px;
 }
 
 .p1msg {
@@ -114,6 +155,12 @@ CHAT PAGE LAYOUT
 
 .p2msg {
 	background-color: #f9cd0e;
+}
+
+#m {
+}
+
+#send {
 }
 
 /*============================================
@@ -156,7 +203,12 @@ h5 {}
 	color: #fff;
 }
 
+#m, #send, #chats li {
+	font-size: 2.5em;
+}
+
 #chats li {
 	list-style: none;
 	list-style-type: none;
 }
+
