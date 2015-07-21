@@ -42,13 +42,13 @@ module.exports = function(io, queue){
 
     //io.to(roomId).emit('start game', null);
     io.to(game.p1).emit('start game', {
-    	playerId: game.p1, 
-    	opponentId: game.p2, 
+    	player1Id: game.p1,
+    	player2Id: game.p2,
     	passphrase: game.p1Target
     });
     io.to(game.p2).emit('start game', {
-    	playerId: game.p2, 
-    	opponentId: game.p1, 
+    	player1Id: game.p1,
+      player2Id: game.p2,
     	passphrase: game.p2Target
     });
 
