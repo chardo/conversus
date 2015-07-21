@@ -90,9 +90,31 @@ LANDING PAGE LAYOUT
 }
 
 /*============================================
-LANDING PAGE LAYOUT
+CHAT PAGE LAYOUT
 ==============================================*/
+#m {
 
+}
+
+#send {
+
+}
+
+#chats {
+
+}
+
+#chats li {
+
+}
+
+.p1msg {
+	background-color: #5adae7;
+}
+
+.p2msg {
+	background-color: #f9cd0e;
+}
 
 /*============================================
 TEXTUAL STYLINGS

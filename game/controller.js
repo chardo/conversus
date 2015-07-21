@@ -40,15 +40,16 @@ module.exports = function(io, queue){
 		var roomId = generateGame(queue, io);
 		var game = games[roomId];
 
-    //io.to(roomId).emit('start game', null);
     io.to(game.p1).emit('start game', {
     	player1Id: game.p1,
     	player2Id: game.p2,
+      myId: game.p1,
     	passphrase: game.p1Target
     });
     io.to(game.p2).emit('start game', {
     	player1Id: game.p1,
       player2Id: game.p2,
+      myId: game.p2,
     	passphrase: game.p2Target
     });
 

@@ -4,7 +4,7 @@ $(function(){
 
 	var name = generateName(10);
 
-	var player1Id, player2Id, passphrase;
+	var player1Id, player2Id, myId, passphrase;
 	//alert(name);
 
 	$('#join').on('click', function(e){
@@ -18,6 +18,7 @@ $(function(){
 	socket.on('start game', function(data){
 		player1Id = data.player1Id;
 		player2Id = data.player2Id;
+		myId = data.myId;
 		passphrase = data.passphrase;
 		$('#waiting').hide();
 		$('#chat').show();
@@ -64,9 +65,14 @@ $(function(){
 	function createChatMsg(data){
 		var senderClass = '';
 		if (data.senderId == player1Id)
-			senderClass = 'p1Message';
+			senderClass = 'p1msg ';
 		else
-			senderClass = 'p2Message';
+			senderClass = 'p2msg ';
+
+		if (data.senderId == myId)
+			senderClass += 'mine'
+		else
+			senderClass += 'yours'
 
 		var newMsg = '<li class="'+senderClass+'">' + data.msg + '</li>'; 
 		$('#chats').append(newMsg);
