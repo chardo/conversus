@@ -23,6 +23,12 @@ $(function(){
 		$('#waiting').hide();
 		$('#chat').show();
 		$('#passphrase').html(passphrase);
+
+		$('#send').removeClass();
+		if (myId == player1Id)
+			$('#send').addClass('p1send');
+		else
+			$('#send').addClass('p2send');
 	});
 
 	$('#send').on('click', function(){
@@ -63,19 +69,32 @@ $(function(){
 	}
 
 	function createChatMsg(data){
-		var senderClass = '';
+		var playerNum = ''
+		var meOrYou = '';
+		
+		//check whether message came from player 1 or 2
 		if (data.senderId == player1Id)
-			senderClass = 'p1msg ';
+			playerNum = 'p1msg ';
 		else
-			senderClass = 'p2msg ';
+			playerNum = 'p2msg ';
 
+		//check whether message came from me or you
 		if (data.senderId == myId)
-			senderClass += 'mine'
+			meOrYou += 'me'
 		else
-			senderClass += 'yours'
+			meOrYou += 'you'
+		
+		//check if user is currently scrolled to bottom
+		if ($('#chat-messages').height() + $('#chat-messages').scrollTop() == $('#chat-messages')[0].scrollHeight)
+			var atBottom = true;
 
-		var newMsg = '<li class="'+senderClass+'">' + data.msg + '</li>'; 
+		//append new msg
+		var newMsg = '<li class="'+meOrYou+'"><div class="'+playerNum+'">' + data.msg + '</div></li>'; 
 		$('#chats').append(newMsg);
+
+		//if they are at bottom currently, scroll to keep them there and see new msg
+		if (atBottom)
+			$('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
 	}
 
 	function checkStatus(data){
